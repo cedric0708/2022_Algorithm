@@ -6,6 +6,7 @@
 [알고리즘 원리와 응용](http://www.yes24.com/Product/Goods/64239969)
 
 [Do it! 자료구조와 함께 배우는 알고리즘 입문: C 언어 편](http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&barcode=9791188612130)
+
 [실전 대비 C 알고리즘 인터뷰](http://www.yes24.com/Product/Goods/93386620)
 ## 학습 일정
 |주차|기간|진도|
