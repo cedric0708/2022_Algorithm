@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 int h[100] = { 0 };
-int n=0;
+int n = 0;
 
 int isexternal(int idx) {
 	return (2 * (idx) > n);
@@ -22,13 +22,13 @@ void upheap(int i) {
 }
 
 void downheap(int i) {
-	if (isexternal(2 * i) && isexternal(2 * i + 1)) {
+	if ((2*i)>n&&(2*i+1)>n) {
 		return;
 	}
-	int s = 2 * i + 1;
-	if (isexternal(2 * i + 1)) {
-		if (h[2 * i] > h[s])
-			s = 2 * i;
+	int s = 2 * i;
+	if ((2*i+1)<=n) {
+		if (h[2 * i+1] > h[s])
+			s = 2 * i+1;
 	}
 	if (h[i] >= h[s])
 		return;
