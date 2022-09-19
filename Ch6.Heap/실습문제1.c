@@ -6,10 +6,6 @@
 int h[100] = { 0 };
 int n = 0;
 
-int isexternal(int idx) {
-	return (2 * (idx) > n);
-}
-
 void upheap(int i) {
 	if (i == 1)
 		return;
