@@ -6,10 +6,6 @@
 int h[100] = { 0 };
 int n=0;
 
-int isexternal(int idx) {
-	return (2 * (idx) > n);
-}
-
 void downheap(int i) {
 	if ((2*i)>n&&(2*i+1)>n) {
 		return;
