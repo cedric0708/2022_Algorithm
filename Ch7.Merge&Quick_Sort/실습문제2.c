@@ -19,7 +19,7 @@ int inplacepartition(int *a, int l, int r, int k) {
 	int i = l;
 	int j = r - 1;
 	while (i <= j) {
-		while (i <= j && a[i] <= p)
+		while (i <= j && a[i] < p)
 			i = i + 1;
 		while (j >= i && a[j] >= p)
 			j = j - 1;
@@ -32,18 +32,35 @@ int inplacepartition(int *a, int l, int r, int k) {
 	tmp = a[i];
 	a[i] = a[r];
 	a[r] = tmp;
-
+	j = r - 1;
+	while (i <= j) {
+		while (i <= j && a[i] == p) {
+			j = j - 1;
+		}
+		if (i < j && a[i] == p) {
+			tmp = a[i];
+			a[i++] = a[j];
+			a[j] = tmp;
+		}
+	}
 	return i;
 }
 
 void inplacequicksort(int* a, int l, int r) {
+	int m, q, w;
 	if (l >= r)
 		return;
 	int k = findpivot(a, l, r);
-	int m = inplacepartition(a, l, r, k);
-	int n = inplacepartition(a, l, r, k);
-	inplacequicksort(a, l, m - 1);
-	inplacequicksort(a, n + 1, r);
+	m = q = inplacepartition(a, l, r, k);
+	while (1) {
+		if (a[m] != a[q]) {
+			w = m + 1;
+			break;
+		}
+		m--;
+	}
+	inplacequicksort(a, l, w - 1);
+	inplacequicksort(a, q + 1, r);
 }
 
 
