@@ -179,7 +179,7 @@ Alg buildHeap(A)
 	input array A of n keys
 	output heap A of size n
 
-1. for i <- n/2 ownto 1
+1. for i <- n/2 downto 1
 		downHeap(i, n)
 2. return
 ```
