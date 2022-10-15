@@ -151,3 +151,35 @@ Alg downHeap(i, last)
 7. A[i] <-> A[greater]
 8. downHeap(greater, last)
 ```
+### 상향식 힙 생성
+- 재귀적 상향식 힙 생성
+```C
+Alg buildHeap(L)
+	input list L storing n keys
+	output heap T storing the keys in L
+
+1. T <- convertToCompleteBinaryTree(L)
+2. rBuildHeap(T.root())
+3. return T
+```
+```C
+Alg rBuildHeap(v)			
+	input node v
+	output a heap with root v
+
+1. if (isInternal(v))
+		rBuildHeap(leftChild(v))
+		rBuildHeap(rightChild(v))
+		downHeap(v)
+2. return
+```
+- 비재귀적 상향식 힙 생성
+```C
+Alg buildHeap(A)
+	input array A of n keys
+	output heap A of size n
+
+1. for i <- n/2 ownto 1
+		downHeap(i, n)
+2. return
+```
