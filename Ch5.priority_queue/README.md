@@ -1,4 +1,48 @@
-# Ch5. 우선순위 큐
+## 의사코드 정리
+- 우선순위 큐를 이용한 정렬
+```C
+Alg PQ-Sort(L)
+	input list L
+	output sorted list L
+
+1. P <- empty priority queue
+2. while (!L.isEmpty())
+		e <- L.removeFirst()
+		P.insertItem(e)
+3. while (!P.isEmpty())
+		e <- P.removeMin()
+		L.addLast(e)
+4. return
+```
+- 제자리 선택 정렬
+```C
+Alg inPlaceSelectionSort(A)
+	input array A of n keys
+	output sorted array A
+
+1. for pass <- 0 to n – 2
+		minLoc <- pass
+		for j <- (pass + 1) to n – 1
+			if (A[j] < A[minLoc])
+				minLoc <- j
+		A[pass] <-> A[minLoc]
+2. return
+```
+- 제자리 삽입 정렬
+```C
+Alg inPlaceInsertionSort(A)
+	input array A of n keys
+	output sorted array A
+
+1. for pass <- 1 to n – 1
+		save <- A[pass]
+		j <- pass – 1
+		while ((j >= 0) & (A[j] > save))
+			A[j + 1] <- A[j]
+			j <- j – 1
+		A[j + 1] <- save
+2. return
+```
 ### 우선순위 큐란?
 ~~~
 임의의 데이터 항목이 삽입되며, 일정한 순서에 의해 삭제되는 데이터구조
@@ -22,48 +66,3 @@
 |:--:|:--:|:--:|
 |무순리스트|insertItem : O(1)/removeMin, minKey, minElement : O(n)|선택 정렬|
 |순서리스트|insertItem : O(n)/removeMin, minKey, minElement : O(1)|삽입 정렬|
-### 의사코드 정리
-- 우선순위 큐를 이용한 정렬
-~~~
-Alg PQ-Sort(L)
-	input list L
-	output sorted list L
-
-1. P <- empty priority queue
-2. while (!L.isEmpty())
-		e <- L.removeFirst()
-		P.insertItem(e)
-3. while (!P.isEmpty())
-		e <- P.removeMin()
-		L.addLast(e)
-4. return
-~~~
-- 제자리 선택 정렬
-~~~
-Alg inPlaceSelectionSort(A)
-	input array A of n keys
-	output sorted array A
-
-1. for pass <- 0 to n – 2
-		minLoc <- pass
-		for j <- (pass + 1) to n – 1
-			if (A[j] < A[minLoc])
-				minLoc <- j
-		A[pass] <-> A[minLoc]
-2. return
-~~~
-- 제자리 삽입 정렬
-~~~
-Alg inPlaceInsertionSort(A)
-	input array A of n keys
-	output sorted array A
-
-1. for pass <- 1 to n – 1
-		save <- A[pass]
-		j <- pass – 1
-		while ((j >= 0) & (A[j] > save))
-			A[j + 1] <- A[j]
-			j <- j – 1
-		A[j + 1] <- save
-2. return
-~~~
