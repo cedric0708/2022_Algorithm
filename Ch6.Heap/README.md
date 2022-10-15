@@ -1,6 +1,6 @@
-## 의사코드 정리
-### 교재 기준
-- 힙 삽입
+# 의사코드 정리
+## 교재 기준
+### 힙 삽입
 ```C
 Alg insertItem(k)
 	input key k, node last
@@ -43,4 +43,57 @@ Alg expandExternal(z)
 9. z.left <- l
 10. z.right <- r
 11. return
+```
+### 힙 삭제
+```C
+Alg removeMin()
+	input node last
+	output key
+
+1. k <- key(root())
+2. w <- last
+3. Set root to key(w)
+4. retreatLast() //last node 갱신
+5. z <- rightChild(w)
+6. reduceExternal(z) //z를 외부노드로 축소
+7. downHeap(root()) //힙 순서 복구
+8. return k
+```
+- 힙 순서 복구
+```C
+Alg downHeap(v)
+	input node v whose left and right subtrees are heaps
+	output a heap with root v
+1. if(isExternal(leftChild(v)) & isExternal(rightChild(v))
+	return
+2. smaller <- leftChild(v)
+3. if(isInternal(rightChild(v))
+	if(key(rightChild(v)) < key(smaller))
+		smaller <- rightChild(v)
+4. if(key(v) <= key(smaller))
+	return
+5. swapElements(v, smaller)
+6. downHeap(smaller)
+```
+- 외부노드 축소
+```C
+Alg reduceExternal(z) 	
+	input external node z
+	output the node replacing the parent node of the removed node z
+
+1. w <- z.parent
+2. zs <- sibling(z)
+3. if (isRoot(w))
+		root <- zs		
+		zs.parent <- NULL
+	else
+		g <- w.parent
+		zs.parent <- g
+		if (w = g.left)
+			g.left <- zs
+		else {w = g.right}
+			g.right <- zs
+4. putnode(z)			
+5. putnode(w)			
+6. return zs
 ```
