@@ -183,3 +183,46 @@ Alg buildHeap(A)
 		downHeap(i, n)
 2. return
 ```
+## 실습문제 기준
+- 힙 삽입
+```C
+Alg insertItem(key) {힙 삽입}
+	input integer key {key: 삽입 키}, array H {H: 전역 배열, heap}
+	output array H {H: 전역 배열, heap}
+1. n ← n + 1 {n 갱신}
+2. H[n] ← key {힙에 초기 삽입 위치는 n}
+3. upHeap(n) {힙 조정}
+4. return
+```
+- 힙 삭제
+```C
+Alg removeMax() {힙 삭제}
+	input array H {H: 전역 배열, heap}
+	output array H {H: 전역 배열, heap}
+1. key ← H[1] {루트 키 보관}
+2. H[1] ← H[n] {힙의 마지막 키를 루트로 이동}
+3. n ← n – 1 {n 갱신}
+4. downHeap(1) {힙 조정}
+5. return key {삭제 키 반환}
+```
+- 재귀적 상향식 힙 생성
+```C
+Alg rBuildHeap(i) {힙 생성 - 재귀 버전}
+	input integer i {i: 현재 부트리의 루트 인덱스}, array H {H: 전역 배열, non-heap}
+	output array H {H: 전역 배열, heap}
+1. if (i > n) {n: 전역 변수}
+	return
+2. rBuildHeap(2i) {현재 부트리의 좌 부트리를 힙 생성}
+3. rBuildHeap(2i + 1) {현재 부트리의 우 부트리를 힙 생성}
+4. downHeap(i) {현재 부트리의 루트와 좌우 부트리를 합친 힙 생성}
+5. return
+```
+- 비재귀적 상향식 힙 생성
+```C
+Alg buildHeap() {힙 생성 - 비재귀 버전}
+	input array H {H: 전역 배열, non-heap}
+	output array H {H: 전역 배열, heap}
+1. for i ← n/2 downto 1 {n: 전역 변수, 마지막 내부노드부터 역방향으로 루트까지}
+downHeap(i)
+2. return
+```
