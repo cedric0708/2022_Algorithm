@@ -29,7 +29,7 @@ Alg treeSearch(v, k)
 - 삽입
 ```C
 Alg insertItem(k, e)
-	input binary search tree T,	key k, element e
+	input binary search tree T, key k, element e
 	output none
 
 1. w <- treeSearch(root(), k)
