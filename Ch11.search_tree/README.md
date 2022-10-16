@@ -1,5 +1,6 @@
 # 의사코드 정리
-## 이진 탐색 트리
+## 교재 기준
+### 이진 탐색 트리
 - 탐색
 ```C
 Alg findElement(k)
@@ -61,4 +62,66 @@ Alg removeElement(k)
 		Set node w to (key(y), element(y))
 		reduceExternal(z)
 7. return e
+```
+## 실습문제 기준
+```C
+Alg isExternal(w)
+	input node w
+	ouput boolean
+1. if (w.left = NULL & w.right = NULL)
+	return True
+   else 
+        return False
+```
+```C
+Alg isInternal(w)
+	input node w
+	output boolean
+1. if (w.left != NULL or w.right != NULL)
+	return True
+   else 
+   	return False
+```
+```C
+Alg sibling(w)
+	input node w
+	output sibling of w
+1. if (isRoot(w))
+	invalidNodeException()
+2. if(leftChild(parent(w)) = w)
+	return rightChild(parent(w))
+   else
+        return leftChild(parent(w))
+```
+```C
+Alg inOrderSucc(w)
+	input internal node w
+	output inorder successor of w
+1. w <- rightChild(w)
+2. if(isExternal(w))
+	invalidNodeException()
+3. while (isInternal(leftChild(w)))
+	w <- leftChild(w)
+4. return w
+```
+```C
+Alg reduceExternal(z)
+	input external node z
+	output the node replacing the parent node of the removed node z
+
+1. w <- z.parent
+2. zs <- sibling(z)
+3. if(isRoot(w))
+	root <- zs
+	zs.parent <- NULL
+   else
+   	g <- w.parent
+	zs.parent <- g
+	if (w = g.left)
+		g.left <- zs
+	else
+		g.right <- zs
+4. putnode(z)
+5. putnode(w)
+6. return zs
 ```
